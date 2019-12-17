@@ -6,25 +6,20 @@
 
 **Linux 下的微信客户端. 使用[Electron](https://github.com/atom/electron)构建.**
 
-# Electron 更新到了v7.1.5，以及部分依赖
-
 # 感谢
 
 感谢 [kooritea](https://github.com/kooritea/electronic-wechat) 和 [geeeeeeeeek](https://github.com/geeeeeeeeek/electronic-wechat)
-
-另外可以尝试使用 [winetricks-zh](https://github.com/hillwoodroc/winetricks-zh) 的wine-wechat
-
 
 ## 更新记录
 
 --- 2019-12-17 ---
 
-> Electron 更新到了v7.1.5
+> Electron 更新到了v7.1.5，以及部分依赖
 
 ### 部分更新记录
 请查看[kooritea](https://github.com/kooritea/electronic-wechat)维护的版本
 
-#### [下载构建好的应用](https://github.com/kooritea/electronic-wechat/releases)
+#### [下载构建好的应用](https://github.com/palytoxin/electronic-wechat/releases)
 
 ## 如何使用
 
