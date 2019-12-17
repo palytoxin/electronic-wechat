@@ -1,21 +1,21 @@
-/**
- * Created by Zhongyi on 3/25/16.
- */
+/* eslint-disable class-methods-use-this */
 
 'use strict';
 
-const { dialog, shell, app, nativeImage } = require('electron');
-const AppConfig = require('../configuration');
+const {
+  dialog, shell, app, nativeImage,
+} = require('electron');
 const https = require('https');
 const path = require('path');
+const AppConfig = require('../configuration');
 
-const Common = require('../common');;
+const Common = require('../common');
 
 class UpdateHandler {
   checkForUpdate(version, silent) {
     UpdateHandler.CHECKED = true;
     const promise = new Promise((res, rej) => {
-      if (Common.ELECTRON === app.getName()) {
+      if (Common.ELECTRON === app.name) {
         rej(Common.UPDATE_ERROR_ELECTRON);
       }
       const req = https.get({
@@ -64,40 +64,39 @@ class UpdateHandler {
   }
 
   _parseUpdateData(body, version, res, rej) {
-    try{
+    try {
       const data = JSON.parse(body);
       if (!data || !data.tag_name) rej(Common.UPDATE_ERROR_EMPTY_RESPONSE);
       const fetched = {
         version: data.tag_name,
         is_prerelease: data.prerelease,
-        name: data.name||`有可用更新 当前版本(${version} > ${data.tag_name})`,
+        name: data.name || `有可用更新 当前版本(${version} > ${data.tag_name})`,
         url: data.html_url,
         description: data.body,
       };
       const versionRegex = /^(v|V)[0-9]+\.[0-9]+\.*[0-9]*$/;
-      if (versionRegex.test(fetched.version) && this.compareVersion(fetched.version,version) && !fetched.is_prerelease) {
+      if (versionRegex.test(fetched.version) && this.compareVersion(fetched.version, version) && !fetched.is_prerelease) {
         res(fetched);
       } else {
         rej(Common.UPDATE_ERROR_LATEST(version));
       }
-    }
-    catch(e){
+    } catch (e) {
       rej(Common.UPDATE_ERROR_UNKNOWN);
     }
   }
 
-  compareVersion (v1,v2) {
-   v1 = v1.match(/v(.*)?\.(.*)?\.(.*)?/)
-   v2 = v2.match(/v(.*)?\.(.*)?\.(.*)?/)
-   for (let i = 1;i < 4;i++) {
-     if(parseInt(v1[i]) > parseInt(v2[i])){
-       return true
-     }
-     if (parseInt(v1[i]) < parseInt(v2[i])) {
-       return false
-     }
-   }
-   return false
+  compareVersion(v1, v2) {
+    v1 = v1.match(/v(.*)?\.(.*)?\.(.*)?/);
+    v2 = v2.match(/v(.*)?\.(.*)?\.(.*)?/);
+    for (let i = 1; i < 4; i += 1) {
+      if (parseInt(v1[i]) > parseInt(v2[i])) {
+        return true;
+      }
+      if (parseInt(v1[i]) < parseInt(v2[i])) {
+        return false;
+      }
+    }
+    return false;
   }
 }
 

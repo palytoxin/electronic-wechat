@@ -1,6 +1,3 @@
-/**
- * Created by oBlank on 3/31/16.
- */
 'use strict';
 
 class ShareMenu {
@@ -10,7 +7,7 @@ class ShareMenu {
     if (dropdownMenuItem.length > ShareMenu.shareMenuItemsCount) return;
 
     ShareMenu.shareMenuItemsCount = dropdownMenuItem.length;
-    const readItem = angular.element('.reader').scope().readItem;
+    const { readItem } = angular.element('.reader').scope();
     const menuHTML = ShareMenu.get({ url: readItem.Url, title: readItem.Title });
     dropdownMenu.prepend(menuHTML);
   }

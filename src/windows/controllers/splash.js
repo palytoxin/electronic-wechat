@@ -1,7 +1,3 @@
-/**
- * Created by Zhongyi on May 1, 2016
- */
-
 'use strict';
 
 const path = require('path');
@@ -9,7 +5,7 @@ const { BrowserWindow } = require('electron');
 
 const AppConfig = require('../../configuration');
 
-const Common = require('../../common');;
+const Common = require('../../common');
 
 class SplashWindow {
   constructor() {

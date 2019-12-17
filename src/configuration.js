@@ -4,9 +4,7 @@ function getUserHome() {
   return process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
 }
 
-const nconf = require('nconf').file({
-  file: `${getUserHome()}/.ew.json`,
-});
+const nconf = require('nconf').file({ file: `${getUserHome()}/.ew.json` });
 
 function saveSettings(settingKey, settingValue) {
   nconf.set(settingKey, settingValue);

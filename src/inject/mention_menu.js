@@ -1,13 +1,9 @@
-/**
- * Created by Zhongyi on 4/9/16.
- */
-
 'use strict';
-const Common = require('../common');
+
 const pinyin = require('pinyin');
+const Common = require('../common');
 
 class MentionMenu {
-
   static init() {
     const $box = $('<div id="userSelectionBox"/>');
 
@@ -48,8 +44,8 @@ class MentionMenu {
       const $scope = angular.element('#chatArea').scope();
       const $select = $box.children('select');
       $select.html('');
-      $scope.currentContact.MemberList.map(m => {
-        if (!MentionMenu.isValidNameHint(name, m.NickName)&&!MentionMenu.isValidNameHint(name, m.DisplayName)) return;
+      $scope.currentContact.MemberList.map((m) => {
+        if (!MentionMenu.isValidNameHint(name, m.NickName) && !MentionMenu.isValidNameHint(name, m.DisplayName)) return;
 
         const $option = MentionMenu.generateOptionFromMember($scope, m);
         if ($option) $select.append($option);
@@ -110,7 +106,7 @@ class MentionMenu {
   }
 
   static generateOptionFromMember($scope, member) {
-    const displayName = member.NickName
+    const displayName = member.NickName;
     let actualName = displayName;
 
     if (member.DisplayName.length > 0) {
@@ -125,7 +121,7 @@ class MentionMenu {
 
     const $option = $('<option/>');
     $option.val(actualName);
-    $option.html(displayName+(member.DisplayName.length?`<${member.DisplayName}>`:''));
+    $option.html(displayName + (member.DisplayName.length ? `<${member.DisplayName}>` : ''));
 
     return $option;
   }

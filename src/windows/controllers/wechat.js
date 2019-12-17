@@ -1,12 +1,10 @@
-/**
- * Created by Zhongyi on 5/2/16.
- */
-
 'use strict';
 
 const path = require('path');
 const isXfce = require('is-xfce');
-const { app, shell, BrowserWindow , globalShortcut , ipcMain, Notification} = require('electron');
+const {
+  app, shell, BrowserWindow, globalShortcut, ipcMain, Notification,
+} = require('electron');
 const electronLocalShortcut = require('electron-localshortcut');
 
 const AppConfig = require('../../configuration');
@@ -15,13 +13,15 @@ const CSSInjector = require('../../inject/css');
 const MessageHandler = require('../../handlers/message');
 const UpdateHandler = require('../../handlers/update');
 
-const Common = require('../../common');;
+const Common = require('../../common');
 
 class WeChatWindow {
   constructor() {
     this.isLogged = false;
     this.isShown = false;
-    this.loginState = { NULL: -2, WAITING: -1, YES: 1, NO: 0 };
+    this.loginState = {
+      NULL: -2, WAITING: -1, YES: 1, NO: 0,
+    };
     this.loginState.current = this.loginState.NULL;
     this.inervals = {};
     this.createWindow();
@@ -32,19 +32,19 @@ class WeChatWindow {
 
   resizeWindow(isLogged, splashWindow) {
     const WECHAT_SIZE = {
-      width:AppConfig.readSettings('width'),
-      height:AppConfig.readSettings('height'),
-    }
+      width: AppConfig.readSettings('width'),
+      height: AppConfig.readSettings('height'),
+    };
     const size = isLogged ? WECHAT_SIZE : Common.WINDOW_SIZE_LOGIN;
-    this.isLogged = isLogged
+    this.isLogged = isLogged;
     this.wechatWindow.setSize(size.width, size.height);
     if (this.loginState.current === 1 - isLogged || this.loginState.current === this.loginState.WAITING) {
       splashWindow.hide();
       this.show();
       this.loginState.current = isLogged;
     }
-    if(!isLogged){
-      this.wechatWindow.center()
+    if (!isLogged) {
+      this.wechatWindow.center();
     }
   }
 
@@ -67,8 +67,8 @@ class WeChatWindow {
       },
     });
     /* menu is always visible on xfce session */
-    isXfce().then(data => {
-      if(data) {
+    isXfce.then((data) => {
+      if (data) {
         this.wechatWindow.setMenuBarVisibility(true);
         this.wechatWindow.setAutoHideMenuBar(false);
       }
@@ -76,11 +76,14 @@ class WeChatWindow {
   }
 
   loadURL(url) {
-    this.wechatWindow.loadURL(url);
+    const options = {
+      userAgent: Common.USER_AGENT[process.platform],
+    };
+    this.wechatWindow.loadURL(url, options);
   }
 
   show() {
-    if(!this.wechatWindow.isVisible()){
+    if (!this.wechatWindow.isVisible()) {
       this.wechatWindow.webContents.send('show-wechat-window');
     }
     this.wechatWindow.show();
@@ -90,40 +93,40 @@ class WeChatWindow {
     this.wechatWindow.hide();
   }
 
-  minimize(){
+  minimize() {
     this.wechatWindow.minimize();
   }
 
-  restore(){
+  restore() {
     this.wechatWindow.restore();
   }
 
-  setFullScreen(flag){
+  setFullScreen(flag) {
     this.wechatWindow.setFullScreen(flag);
   }
 
-  close(){
-    this.isShown = false
-    this.hide()
-    if(AppConfig.readSettings('close') !== 'on'){
-      this.exit()
+  close() {
+    this.isShown = false;
+    this.hide();
+    if (AppConfig.readSettings('close') !== 'on') {
+      this.exit();
     }
   }
 
-  exit(){
-    this.hide()
-    if(this.isLogged){
+  exit() {
+    this.hide();
+    if (this.isLogged) {
       this.wechatWindow.webContents.send('loginout');
     }
-    if(!this.isLogged){
-      app.exit(0)
-      return
+    if (!this.isLogged) {
+      app.exit(0);
+      return;
     }
-    setInterval(()=>{
-      if(!this.isLogged){
-        app.exit(0)
+    setInterval(() => {
+      if (!this.isLogged) {
+        app.exit(0);
       }
-    },1000)
+    }, 1000);
   }
 
   connectWeChat() {
@@ -143,7 +146,6 @@ class WeChatWindow {
   }
 
   initWindowWebContent() {
-    this.wechatWindow.webContents.setUserAgent(Common.USER_AGENT[process.platform]);
     if (Common.DEBUG_MODE) {
       this.wechatWindow.webContents.openDevTools();
     }
@@ -161,7 +163,7 @@ class WeChatWindow {
         this.wechatWindow.webContents.insertCSS(CSSInjector.osxCSS);
       }
 
-      if(AppConfig.readSettings('css') === 'on'){
+      if (AppConfig.readSettings('css') === 'on') {
         this.wechatWindow.webContents.send('setCss', AppConfig.readSettings('css-content'));
       }
 
@@ -182,7 +184,7 @@ class WeChatWindow {
   }
 
   initWindowEvents() {
-    ipcMain.on('refreshCss', (e,css) => {
+    ipcMain.on('refreshCss', (e, css) => {
       this.wechatWindow.webContents.send('setCss', css);
     });
 
@@ -241,61 +243,60 @@ class WeChatWindow {
     });
 
     this.wechatWindow.on('blur', () => {
-      if(AppConfig.readSettings('blur') === 'on'){
+      if (AppConfig.readSettings('blur') === 'on') {
         this.isShown = false;
         this.wechatWindow.webContents.send('hide-wechat-window');
       }
     });
 
-    this.wechatWindow.on('resize',(event) => {
-      if(this.isLogged){
+    this.wechatWindow.on('resize', (event) => {
+      if (this.isLogged) {
         this.debounce(
           () => {
-            let size = this.wechatWindow.getSize()
-            AppConfig.saveSettings('width',size[0])
-            AppConfig.saveSettings('height',size[1])
-          }
-        )
+            const size = this.wechatWindow.getSize();
+            AppConfig.saveSettings('width', size[0]);
+            AppConfig.saveSettings('height', size[1]);
+          },
+        );
       }
-    })
+    });
 
     this.wechatWindow.on('exit', () => {
-      this.exit()
+      this.exit();
     });
   }
 
-  unregisterLocalShortCut() {//注销快捷键
-    try{
+  unregisterLocalShortCut() { // 注销快捷键
+    try {
       electronLocalShortcut.unregisterAll(this.wechatWindow);
-    }catch(e){
-      //　快捷键解绑失败
+    } catch (e) {
+      // 快捷键解绑失败
     }
-    
   }
 
   initWechatWindowShortcut() {
-    try{
+    try {
       globalShortcut.register('CommandOrControl+Alt+W', () => {
-        this.show()
-      })
+        this.show();
+      });
       electronLocalShortcut.register(this.wechatWindow, 'CommandOrControl+H', () => {
         this.minimize();
       });
-    }catch(e){
-      //　快捷键绑定失败
+    } catch (e) {
+      // 快捷键绑定失败
       (new Notification({
-        title:"electronic-wechat",
-        body: "快捷键绑定失败",
-        icon:path.join(__dirname, '../assets/icon.png')
-      })).show()
+        title: 'electronic-wechat',
+        body: '快捷键绑定失败',
+        icon: path.join(__dirname, '../assets/icon.png'),
+      })).show();
     }
   }
 
-  debounce(func){//防抖
-    clearTimeout(this.timer)
-    this.timer = setTimeout(()=>{
-      func()
-    },300)
+  debounce(func) { // 防抖
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      func();
+    }, 300);
   }
 }
 

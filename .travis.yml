@@ -21,7 +21,7 @@ deploy:
   - 'dist/linux-ia32.tar.gz'
   skip_cleanup: true
   on:
-    repo: geeeeeeeeek/electronic-wechat
+    repo: palytoxin/electronic-wechat
     branch: production
 notifications:
   webhooks:

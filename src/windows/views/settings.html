@@ -11,7 +11,7 @@
     <div class="top-bar-left">
       <img class="top-bar-icon" src="../../../assets/icon.png">
     </div>
-    <div class="top-bar-right">
+    <div class="top-bar-right" style="display: none;">
       <button type="button" class="upgrade-btn" id="upgrade-btn" onclick="upgrade()">检查更新</button>
       <button type="button" class="upgrade-btn" id="feedback-btn" onclick="feedback()">联系我们</button>
     </div>
@@ -155,7 +155,7 @@
         </li>
       </ul>
     </section>
-    <section>
+    <section style="display: none;">
       <ul>
         <li class="menu-title">
           <h3 id="app-icon-title">Flash 路径[不知道是啥，可能不会上线了]</h3>
@@ -340,32 +340,11 @@
 
     $('top-title-electron-ver').innerText = process.versions.electron;
     setConfig();
-    //setListeners()
 
     let Common = require('../../common');
     if (lan !== 'zh-CN') {
       setLocale();
     }
-
-    // function setListeners() {
-    //   lanSelect.addEventListener('change', function() {
-    //     $('app-language-title').innerHTML = 2233
-    //     AppConfig.saveSettings('language', lanSelect.value)
-    //   })
-    //   recallSelect.addEventListener('change', function() {
-    //     AppConfig.saveSettings('prevent-recall', recallSelect.value)
-    //   })
-    //   notificationSelect.addEventListener('change', function() {
-    //     AppConfig.saveSettings('click-notification', notificationSelect.value)
-    //   })
-    //   instanceSelect.addEventListener('change', function() {
-    //     AppConfig.saveSettings('multi-instance', instanceSelect.value)
-    //   })
-    //   trayColorSelect.addEventListener('change', function() {
-    //     AppConfig.saveSettings('tray-color', trayColorSelect.value)
-    //     ipcRenderer.send('refreshIcon')
-    //   })
-    // }
 
     function changefun(name){
       switch(name){

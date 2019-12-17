@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+
 'use strict';
 
 const { remote, shell, ipcRenderer } = require('electron');
@@ -5,7 +7,7 @@ const AppConfig = require('../configuration');
 
 const { Menu, app } = remote;
 
-const Common = require('../common');;
+const Common = require('../common');
 
 class MenuHandler {
   create() {
@@ -253,7 +255,7 @@ class MenuHandler {
 
     if (platform === 'darwin') {
       return darwinTemplate;
-    } else if (platform === 'linux') {
+    } if (platform === 'linux') {
       return linuxTemplate;
     }
   }

@@ -1,16 +1,12 @@
-/**
- * Created by Ji on 9/15/16.
- */
-
 'use strict';
 
 const path = require('path');
 const { BrowserWindow } = require('electron');
 const electronLocalShortcut = require('electron-localshortcut');
 
-const AppConfig = require('../../configuration');
+// const AppConfig = require('../../configuration');
 
-const Common = require('../../common');;
+const Common = require('../../common');
 
 class SettingsWindow {
   constructor() {
@@ -20,7 +16,7 @@ class SettingsWindow {
 
   createSettingsWindow() {
     this.settingsWindow = new BrowserWindow({
-      title:Common.ELECTRONIC_SETINGS,
+      title: Common.ELECTRONIC_SETINGS,
       width: Common.WINDOW_SIZE_SETTINGS.width,
       height: Common.WINDOW_SIZE_SETTINGS.height * 0.9,
       resizable: false,
@@ -30,12 +26,22 @@ class SettingsWindow {
       alwaysOnTop: true,
       icon: 'assets/icon.png',
       titleBarStyle: 'hidden',
+      webPreferences: {
+        javascript: true,
+        plugins: true,
+        nodeIntegration: true,
+        webSecurity: false,
+        devTools: true,
+      },
     });
 
     this.initWindowEvents();
     this.initSettingsWindowShortcut();
 
     this.settingsWindow.loadURL(`file://${path.join(__dirname, '/../views/settings.html')}`);
+    if (Common.DEBUG_MODE) {
+      this.settingsWindow.webContents.openDevTools();
+    }
   }
 
   initWindowEvents() {
@@ -44,11 +50,6 @@ class SettingsWindow {
       this.settingsWindow = null;
       this.isShown = false;
     });
-    // debug
-    // this.settingsWindow.once('ready-to-show', () => {
-    //   this.settingsWindow.show();
-    //   this.settingsWindow.toggleDevTools();
-    // });
   }
 
   show() {

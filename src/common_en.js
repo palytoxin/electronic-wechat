@@ -1,6 +1,3 @@
-/**
- * Created by Zhongyi on 3/26/16.
- */
 'use strict';
 
 class Common {
@@ -36,14 +33,14 @@ Common.USER_AGENT = {
 };
 
 Common.WEB_WECHAT = 'https://wx2.qq.com/?lang=en_US';
-Common.GITHUB = 'https://github.com/geeeeeeeeek/electronic-wechat';
-Common.FORKER_GITHUB = 'https://github.com/kooritea/electronic-wechat'
-Common.GITHUB_RELEASES = 'https://github.com/geeeeeeeeek/electronic-wechat/releases';
+Common.GITHUB = 'https://github.com/palytoxin/electronic-wechat';
+Common.FORKER_GITHUB = 'https://github.com/kooritea/electronic-wechat';
+Common.GITHUB_RELEASES = 'https://github.com/palytoxin/electronic-wechat/releases';
 Common.FORKER_GITHUB_RELEASES = 'https://github.com/kooritea/electronic-wechat/releases';
-Common.GITHUB_ISSUES = 'https://github.com/geeeeeeeeek/electronic-wechat/issues';
-Common.FORKER_GITHUB_ISSUES = 'https://github.com/kooritea/electronic-wechat/issues'
+Common.GITHUB_ISSUES = 'https://github.com/palytoxin/electronic-wechat/issues';
+Common.FORKER_GITHUB_ISSUES = 'https://github.com/kooritea/electronic-wechat/issues';
 Common.GITHUB_API_HOST = 'api.github.com';
-Common.GITHUB_API_RELEASE_LATEST_PATH = '/repos/geeeeeeeeek/electronic-wechat/releases/latest';
+Common.GITHUB_API_RELEASE_LATEST_PATH = '/repos/palytoxin/electronic-wechat/releases/latest';
 
 Common.UPDATE_ERROR_ELECTRON = `Failed to get the local version. If you are using debug mode(by \`npm start\`), this error would happen. Use packed app instead or manually check for updates.\n\n${Common.GITHUB_RELEASES}`;
 Common.UPDATE_ERROR_EMPTY_RESPONSE = 'Failed to fetch release info.';
@@ -63,12 +60,12 @@ Common.MENTION_MENU_OPTION_HEIGHT = 30;
 Common.MENTION_MENU_OPTION_DEFAULT_NUM = 4;
 Common.MENTION_MENU_HINT_TEXT = 'Mention:';
 Common.TEAM_MESSAGE = 'Team message';
-Common.WECHAT_MESSAGE = 'Wechat message'
-Common.RECEIVED_TEAM_MESSAGE = 'Received a team Wechat message' 
+Common.WECHAT_MESSAGE = 'Wechat message';
+Common.RECEIVED_TEAM_MESSAGE = 'Received a team Wechat message';
 
 Common.MESSAGE_PREVENT_RECALL = (name) => {
-  return `Blocked ${name} a message recall.`
-}
+  return `Blocked ${name} a message recall.`;
+};
 Common.EMOJI_MAXIUM_SIZE = 120;
 
 Common.languageTitle = 'Language(Need to Restart)';
@@ -76,9 +73,9 @@ Common.languageDesc = 'Select a default language for WeChat!';
 Common.recallTitle = 'Prevent Message Recall';
 Common.recallDesc = 'Message recall feature might be annoying';
 Common.notificationTitle = 'Open WeChat from the notification';
-Common.notificationDesc = 'Select whether you can open WeChat by clicking on the message notification'
+Common.notificationDesc = 'Select whether you can open WeChat by clicking on the message notification';
 Common.frameTitle = 'No border(Need to Restart)';
-Common.frameDesc = 'Select whether to hide the border'
+Common.frameDesc = 'Select whether to hide the border';
 Common.closeTitle = 'Close the main panel';
 Common.closeDesc = 'Choose to close the main panel to minimize the system tray or exit the program';
 Common.updateTitle = 'Automatic check update';
@@ -89,19 +86,19 @@ Common.iconTitle = 'File Path (In Development)';
 Common.iconDesc = 'Set a default file path';
 Common.trayTitle = 'Tray Icon color (Black/White)';
 Common.trayDesc = 'Select a color to match your desktop theme';
-Common.proxyTitle = 'Set Proxy(Need to Restart)'
-Common.proxyDesc = 'Select Proxy Mode'
-Common.cssTitle = 'The custom CSS'
-Common.cssDesc = 'Customize the style of the wechat'
-Common.zoomTitle = 'set scaling'
-Common.zoomDesc = 'use ctrl+mouse wheel on wechat window'
-Common.blurTitle = 'Blur Processing'
-Common.blurDesc = 'Whether to go into suspended state when blur'
-Common.selectNotificationBodyTitle = 'notification'
-Common.selectNotificationBodyDesc = 'filter notification info'
-Common.historyTitle = 'Chat History'
-Common.historyDesc = 'Keep Chat History(Need to Restart)'
-Common.clearHistoryConfirm = 'Make sure to clear all chat history'
+Common.proxyTitle = 'Set Proxy(Need to Restart)';
+Common.proxyDesc = 'Select Proxy Mode';
+Common.cssTitle = 'The custom CSS';
+Common.cssDesc = 'Customize the style of the wechat';
+Common.zoomTitle = 'set scaling';
+Common.zoomDesc = 'use ctrl+mouse wheel on wechat window';
+Common.blurTitle = 'Blur Processing';
+Common.blurDesc = 'Whether to go into suspended state when blur';
+Common.selectNotificationBodyTitle = 'notification';
+Common.selectNotificationBodyDesc = 'filter notification info';
+Common.historyTitle = 'Chat History';
+Common.historyDesc = 'Keep Chat History(Need to Restart)';
+Common.clearHistoryConfirm = 'Make sure to clear all chat history';
 
 Common.UPGRADE = 'UPGRADE';
 Common.FEEDBACK = 'FEEDBACK';
@@ -139,9 +136,9 @@ Common.MENU = {
 };
 
 Common.TRAY = {
-  show:'show',
+  show: 'show',
   pref: 'Preference',
-  exit:'exit'
-}
+  exit: 'exit',
+};
 
 module.exports = Common;

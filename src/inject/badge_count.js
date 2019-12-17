@@ -1,7 +1,5 @@
-/**
- * Created by Zhongyi on 4/12/16.
- */
 'use strict';
+
 const { ipcRenderer } = require('electron');
 
 class BadgeCount {

@@ -1,6 +1,3 @@
-/**
- * Created by Zhongyi on 3/26/16.
- */
 'use strict';
 
 class Common {
@@ -28,25 +25,25 @@ Common.WINDOW_SIZE_SETTINGS = {
 };
 
 Common.USER_AGENT = {
-  'freebsd': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
-  'sunos': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
-  'win32': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
-  'linux': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
-  'darwin': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36'
-}
+  freebsd: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+  sunos: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+  win32: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+  linux: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
+  darwin: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36',
+};
 
 Common.WEB_WECHAT = 'https://wx2.qq.com/?lang=zh_CN';
-Common.GITHUB = 'https://github.com/geeeeeeeeek/electronic-wechat';
-Common.FORKER_GITHUB = 'https://github.com/kooritea/electronic-wechat'
-Common.GITHUB_RELEASES = 'https://github.com/geeeeeeeeek/electronic-wechat/releases';
+Common.GITHUB = 'https://github.com/palytoxin/electronic-wechat';
+Common.FORKER_GITHUB = 'https://github.com/kooritea/electronic-wechat';
+Common.GITHUB_RELEASES = 'https://github.com/palytoxin/electronic-wechat/releases';
 Common.FORKER_GITHUB_RELEASES = 'https://github.com/kooritea/electronic-wechat/releases';
-Common.GITHUB_ISSUES = 'https://github.com/geeeeeeeeek/electronic-wechat/issues';
-Common.FORKER_GITHUB_ISSUES = 'https://github.com/kooritea/electronic-wechat/issues'
+Common.GITHUB_ISSUES = 'https://github.com/palytoxin/electronic-wechat/issues';
+Common.FORKER_GITHUB_ISSUES = 'https://github.com/kooritea/electronic-wechat/issues';
 Common.GITHUB_API_HOST = 'api.github.com';
-Common.GITHUB_API_RELEASE_LATEST_PATH = '/repos/geeeeeeeeek/electronic-wechat/releases/latest';
+Common.GITHUB_API_RELEASE_LATEST_PATH = '/repos/palytoxin/electronic-wechat/releases/latest';
 Common.FORKER_GITHUB_API_RELEASE_LATEST_PATH = '/repos/kooritea/electronic-wechat/releases/latest';
 
-Common.UPDATE_ERROR_ELECTRON = 'Failed to get the local version. If you are using debug mode(by `npm start`), this error would happen. Use packed app instead or manually check for updates.\n\n' + Common.GITHUB_RELEASES;
+Common.UPDATE_ERROR_ELECTRON = `Failed to get the local version. If you are using debug mode(by \`npm start\`), this error would happen. Use packed app instead or manually check for updates.\n\n${Common.GITHUB_RELEASES}`;
 Common.UPDATE_ERROR_EMPTY_RESPONSE = '没能获取最新的更新信息';
 Common.UPDATE_ERROR_UNKNOWN = '不造什么出错了...';
 Common.UPDATE_NA_TITLE = '没有可用的更新';
@@ -63,16 +60,16 @@ Common.MENTION_MENU_WIDTH = 120;
 Common.MENTION_MENU_OPTION_HEIGHT = 30;
 Common.MENTION_MENU_OPTION_DEFAULT_NUM = 4;
 Common.MENTION_MENU_HINT_TEXT = '选择回复的人:';
-Common.TEAM_MESSAGE = '群聊消息'
-Common.WECHAT_MESSAGE = '微信消息'
-Common.RECEIVED_TEAM_MESSAGE = '收到一条群聊消息'
+Common.TEAM_MESSAGE = '群聊消息';
+Common.WECHAT_MESSAGE = '微信消息';
+Common.RECEIVED_TEAM_MESSAGE = '收到一条群聊消息';
 
 Common.MESSAGE_PREVENT_RECALL = (name) => {
-  return `阻止了 \"${name}\" 的一次撤回`
-}
+  return `阻止了 "${name}" 的一次撤回`;
+};
 Common.EMOJI_MAXIUM_SIZE = 120;
 
-Common.clearHistoryConfirm = '确定要清除所有聊天记录？'
+Common.clearHistoryConfirm = '确定要清除所有聊天记录？';
 
 Common.MENU = {
   about: '关于 Electronic Wechat',
@@ -91,8 +88,8 @@ Common.MENU = {
   selectAll: '选择全部',
   view: '视图',
   reload: '重新加载当前窗口',
-  toggleFullScreen:'切换全屏',
-  searchContacts:'搜索联系人',
+  toggleFullScreen: '切换全屏',
+  searchContacts: '搜索联系人',
   devtool: '开发者工具',
   window: '窗口',
   min: '最小化',
@@ -107,10 +104,10 @@ Common.MENU = {
 };
 
 Common.TRAY = {
-  show:'显示微信',
-  pref:'偏好',
-  exit:'退出'
-}
+  show: '显示微信',
+  pref: '偏好',
+  exit: '退出',
+};
 
 
 module.exports = Common;
