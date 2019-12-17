@@ -39,15 +39,15 @@
   "homepage": "https://github.com/palytoxin/wechat-electron/",
   "originalhomepage": "https://github.com/kooritea/wechat-electron/",
   "dependencies": {
-    "electron": "^7.1.5",
     "electron-localshortcut": "^3.2.1",
-    "electron-packager": "^14.1.1",
     "emojione": "^4.5.0",
     "is-xfce": "^4.0.0",
     "nconf": "^0.10.0",
     "pinyin": "^2.9.0"
   },
   "devDependencies": {
+    "electron": "^7.1.5",
+    "electron-packager": "^14.1.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-config-airbnb": "^18.0.1",
