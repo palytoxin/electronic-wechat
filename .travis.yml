@@ -1,33 +1,21 @@
 language: node_js
 sudo: required
 node_js:
-- '8.16.2'
+- 8.16.2
 branches:
   only:
   - master
 before_script:
 - npm install
 script:
-- ./scripts/build-all.sh
-- ./scripts/tar-all.sh
-# deploy:
-#   provider: releases
-#   api_key:
-#     secure: ETudcaMBembv5mq5WcA0Zu5YCQt02A8sfMIYJ+XN0dTUCFRODYgyk8SiW3ndI4zLfhsc31KbYecSVfcrvYhPlkLucdhD0hY+v4mowrGaG6q3DUE4v9+qATOE5z51MPNTQO/suPNZpeFkSCKaWh6SY9oSd/tsD+YmbcpuD0//DMiFMpYqA8ueQ7yka4SmlZq8C48MsRbULAtyHNEVNJ4en9xdE9vFHZ45kM2A2IWYVikuCa5J6YoL7N2CyIFwtKMeF68d0vwidXUXEc7z1VOHwosG7V0vEfNRrIy4mft0tXyEYe/nM8GlYnirVRCy3xF4h4ssERXbLMuZSYGm+bg/pqReL+dvsN5oKszuo7IseZnE8QfmmhfbMB4dWf8Le5WXfFgJTG28lNvl2VwTTEW4Cj5qeJmfO524GydqRE+i3uQvW4c2tBTFmfpusPnaFqVXTPH7o54hT18hYvgaBvJQv6pyMNMLLXq0BbkzquTTWTwb8lSi8XiRr/fWkQreRZNofJc21ZUSI5YcuqZpzbz1fOLseC4QJ8YXQ9b2OU/LiFF3gvHTK6vSKMQmbOFg0zFXMi5FT1SzCi/mKduax/OR/H6lolVW83eXCG1Ni+sIrwUkp0d/UL6E1pVeJMibBrOEgriWIpD+AiVzNVyBdq/oDC6qG9IXRWzii9Ks6J9zH7k=
-#   file:
-#   - 'dist/mac-osx.tar.gz'
-#   - 'dist/linux-x64.tar.gz'
-#   - 'dist/linux-ia32.tar.gz'
-#   skip_cleanup: true
-#   on:
-#     repo: palytoxin/electronic-wechat
-#     branch: production
-# notifications:
-#   webhooks:
-#     urls:
-#       - https://webhooks.gitter.im/e/d6bab2376f47ee992d78
-#     on_success: always  # options: [always|never|change] default: always
-#     on_failure: always  # options: [always|never|change] default: always
-#     on_start: always     # options: [always|never|change] default: always
-# after_deploy:
-#   - ./scripts/qiniu.sh
+- "./scripts/build-all.sh"
+- "./scripts/tar-all.sh"
+deploy:
+  provider: releases
+  api_key:
+    secure: oXxGSAuUDt/Q/DY7yyquJf/NQ7xpBpK0pFWzQRHI2xKgTkxaqbhxPuCS7Yupnjq/ugksNIi0A6Di2JEs8qNpkI6TFwXKC+lMusyamqdNv1R42wrbNmbD7GtSws8L+6P5/wCyJPCsAdp7pqFspGPfC3Y9SD/WPtD/+JYX4csUkgXY1thfGhGi1kNgnVemlqwrUQc1nfgNXI75aLuxLWgJ/yFwZtO/aOevxr6XDCNTp4pUW+Pzldp7VEPC91TfE3ScCvJG9v9VIvBWNOlrDM03XfwkhiR+OXFjMa56/RIY4s6NZRBce0A1CSB94EFgQZODq8gTN9RT9Atoe0+ylrOpRX+wzoannvP5TKOEErz3e27WN0MC7Gw7vlw+wmp17ogpcA3NT5FOdU/nb0VlUFkjZYlZW7QqL4Q2tRRuCtWPpU+eYPdrSsKJ6Hyxu48PFSLL87SDPDKfGys4P6fE+S6Ywn8TDpvs3Vn4lPWa8MrySAJIvwqUAM+LU7RU44PrXROlNEdDVqgEFIpxm6U5xZNzNMKjMnIEYA1UWV6zluG67NQjCSfjsufTsYJCqyAqTIFiJKp0EPIXe5q/bg/DRRnAfsGjQO2VRJXtMStYTGrGWQugEk3fHR8NJtG3CtrNS0xg1StyCxNanJrsZEBJggY30pJ1QLCUGB+Nqyuwzj/YNNo=
+  file: dist/linux-x64.tar.gz
+  skip_cleanup: true
+  on:
+    repo: palytoxin/electronic-wechat
+    branch: production
