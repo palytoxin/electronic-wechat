@@ -1,19 +1,14 @@
 {
   "name": "electronic-wechat",
-  "version": "2.3.1",
+  "version": "2.3.1.1",
   "description": "An Electron application for WeChat",
   "main": "src/main.js",
   "scripts": {
     "start": "electron src/main.js",
     "build": "./scripts/build-all.sh",
-    "build:osx": "./scripts/build.sh darwin x64",
-    "build:osx64": "./scripts/build.sh darwin x64",
     "build:linux32": "./scripts/build.sh linux ia32",
     "build:linux": "./scripts/build.sh linux x64",
-    "build:linux64": "./scripts/build.sh linux x64",
-    "build:win": ".\\scripts\\build-win32.bat win32 ia32",
-    "build:win32": ".\\scripts\\build-win32.bat win32 ia32",
-    "build:win64": ".\\scripts\\build-win32.bat win32 x64"
+    "build:linux64": "./scripts/build.sh linux x64"
   },
   "repository": {
     "type": "git",
@@ -23,11 +18,10 @@
   "keywords": [
     "Electron",
     "WeChat",
-    "微信",
-    "Web"
+    "微信"
   ],
   "author": {
-    "name": "kooritea",
+    "name": "palytoxin",
     "originalauthor": "kooritea",
     "email": "sxty32@gmail.com"
   },
@@ -43,17 +37,18 @@
     "emojione": "^4.5.0",
     "is-xfce": "^4.0.0",
     "nconf": "^0.10.0",
-    "pinyin": "^2.9.0"
+    "node-pre-gyp": "^0.15.0",
+    "pinyin": "^2.9.1"
   },
   "devDependencies": {
-    "electron": "^7.1.5",
-    "electron-packager": "^14.1.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
-    "eslint-config-airbnb": "^18.0.1",
+    "babel-eslint": "^10.1.0",
+    "electron": "^9.1.0",
+    "electron-packager": "^15.0.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^1.7.0"
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8"
   }
 }
