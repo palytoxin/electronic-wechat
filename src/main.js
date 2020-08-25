@@ -4,7 +4,6 @@
 
 const { app, ipcMain } = require('electron');
 
-
 const UpdateHandler = require('./handlers/update');
 const Common = require('./common');
 const AppConfig = require('./configuration');
@@ -13,7 +12,6 @@ const SplashWindow = require('./windows/controllers/splash');
 const WeChatWindow = require('./windows/controllers/wechat');
 const SettingsWindow = require('./windows/controllers/settings');
 const AppTray = require('./windows/controllers/app_tray');
-
 
 class ElectronicWeChat {
   constructor() {

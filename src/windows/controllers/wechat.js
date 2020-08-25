@@ -167,7 +167,6 @@ class WeChatWindow {
         this.wechatWindow.webContents.send('setCss', AppConfig.readSettings('css-content'));
       }
 
-
       if (AppConfig.readSettings('update') === 'on') {
         new UpdateHandler().checkForUpdate(`v${app.getVersion()}`, true);
       }
